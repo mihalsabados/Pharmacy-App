@@ -1,0 +1,11 @@
+.table {
+	border: 1px solid black;
+}
+
+.createProduct {
+	margin: 0 auto;
+	display: flex;
+	justify-content: right;
+	width: 70%;
+	margin-top: 20px;
+}

@@ -1,9 +1,10 @@
 import "./MainView.css";
+import { Outlet } from "react-router-dom";
 
 function MainView() {
 	return (
 		<div className="view">
-			<h1>Products</h1>
+			<Outlet />
 		</div>
 	);
 }
