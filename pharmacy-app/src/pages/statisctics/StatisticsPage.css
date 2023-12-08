@@ -1,0 +1,11 @@
+.bar-chart {
+	width: 800px;
+	height: 500px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.statisctics-div {
+	padding-bottom: 80px;
+}
