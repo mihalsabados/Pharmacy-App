@@ -1,5 +1,5 @@
 import "./ProductPage.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,9 +12,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
+import { deleteProduct } from "../../features/products/productsSlice";
 
 function ProductPage() {
 	const products = useSelector((state) => state.products);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	function formatDate(date) {
@@ -23,8 +25,16 @@ function ProductPage() {
 		);
 	}
 
+	function handleEdit(productId) {
+		navigate("/edit-product/" + productId);
+	}
+
+	function handleDelete(productId) {
+		dispatch(deleteProduct(productId));
+	}
+
 	return (
-		<div>
+		<div className="products-div">
 			<h1>Products</h1>
 			<TableContainer component={Paper} sx={{ width: "70%", margin: "0 auto" }}>
 				<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -54,14 +64,22 @@ function ProductPage() {
 								<TableCell>{formatDate(product.expiryDate)}</TableCell>
 								<TableCell>
 									<Tooltip title="Edit">
-										<IconButton aria-label="edit" sx={{ color: "blue" }}>
+										<IconButton
+											aria-label="edit"
+											sx={{ color: "blue" }}
+											onClick={() => handleEdit(product.id)}
+										>
 											<EditIcon />
 										</IconButton>
 									</Tooltip>
 								</TableCell>
 								<TableCell>
 									<Tooltip title="Delete">
-										<IconButton aria-label="delete" sx={{ color: "red" }}>
+										<IconButton
+											aria-label="delete"
+											sx={{ color: "red" }}
+											onClick={() => handleDelete(product.id)}
+										>
 											<DeleteIcon />
 										</IconButton>
 									</Tooltip>

@@ -5,6 +5,7 @@ import Layout from "./pages/layout/Layout";
 import AboutPage from "./pages/about/AboutPage";
 import StatisticsPage from "./pages/statisctics/StatisticsPage";
 import NewProductPage from "./pages/newProduct/NewProductPage";
+import EditProductPage from "./pages/editProduct/EditProductPage";
 
 function App() {
 	return (
@@ -18,6 +19,10 @@ function App() {
 						<Route path="about" element={<AboutPage />} />
 						<Route path="statistics" element={<StatisticsPage />} />
 						<Route path="new-product" element={<NewProductPage />} />
+						<Route
+							path="edit-product/:productId"
+							element={<EditProductPage />}
+						/>
 					</Route>
 				</Routes>
 			</BrowserRouter>
